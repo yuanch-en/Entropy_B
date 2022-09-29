@@ -5,7 +5,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
-n = 25 # number of cities
+n = 20 # number of cities
 m = 50 # number of population
 
 # Generate cities
@@ -76,7 +76,7 @@ def B_score(D):
     ranks = np.empty_like(temp)
     ranks[temp] = np.arange(len(D))
     for i in range(len(D)):
-        b = np.count_nonzero(D = D[i])
+        b = np.count_nonzero(D)
         prob = b / m
         B = math.log(b)
         a = math.exp(-(ranks[i] + B))
@@ -259,6 +259,7 @@ def main(iter):
             for i in range(n):
                 x.append(City[p[i]][0])
                 y.append(City[p[i]][1])
+                
             
             if j == (iter - 1):
                 x.append(City[p[0]][0])
@@ -297,9 +298,5 @@ plt.xlabel('iteration')
 plt.ylabel('distance')
 plt.show()
 
-plt.plot(X, S_mean)
-plt.title('Mean Score vs Iteration')
-plt.xlabel('iteration')
-plt.ylabel("score")
 
 plt.show()
